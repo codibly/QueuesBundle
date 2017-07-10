@@ -1,0 +1,30 @@
+{
+  "name" : "codibly/queues-bundle",
+  "description" : "Bundle with utilities of queues dealing based on BernardBundle",
+  "type" : "symfony-bundle",
+  "authors" : [{
+    "name" : "Michał Myszka",
+    "email" : "michal.myszka@codibly.com"
+  }],
+  "keywords" : [
+    "utilities queues messaging bernard codibly"
+  ],
+  "require" : {
+    "bernard/bernard-bundle" : "dev-bugfix",
+    "symfony/framework-bundle" : "~2.4|~3.0"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "Codibly\\UtilityQueuesBundle" : ""
+    }
+  },
+  "target-dir" : "Codibly/UtilityQueuesBundle",
+  "repositories" : [{
+
+  }],
+  "extra": {
+    "branch-alias" : {
+      "dev-master" : "some_version-dev"
+    }
+  }
+}
