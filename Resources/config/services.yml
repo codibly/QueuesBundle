@@ -1,0 +1,4 @@
+services:
+#    codibly_queues.example:
+#        class: Codibly\QueuesBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

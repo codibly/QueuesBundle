@@ -1,0 +1,3 @@
+codibly_queues_homepage:
+    path:     /
+    defaults: { _controller: CodiblyQueuesBundle:Default:index }
