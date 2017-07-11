@@ -30,7 +30,7 @@ use Codibly\QueuesBundle\Message\MessageEntityAbstract;
 use Doctrine\ORM\Mapping as ORM;
 
 
-/**
+/**Interface
  * @ORM\Entity()
  * @ORM\Table(name="messages")
  * @ORM\InheritanceType("SINGLE_TABLE")
@@ -102,7 +102,7 @@ class DeployMessage extends Message
     }
 ```
 
-3. Add to your services.yml definition for MessageFactory service, completing calls section for add message binding:
+4. Add to your services.yml definition for MessageFactory service, completing calls section for add message binding:
 
 ``` yml
 codibly_queues.message_factory:
@@ -112,4 +112,14 @@ codibly_queues.message_factory:
         - ['addInternalMessageBinding', ['deployQueue', 'ExampleBundle\Entity\Message\DeployMessage']]
         - ['addInternalMessageBinding', ['deployResultQueue', 'ExampleBundle\Entity\Message\DeployResultMessage']]
     public: true
+```
+5. ... and create your consumers based on GeneralConsumer. Example:
+```yml
+deploy_consumer:
+        autowire: false
+        autoconfigure: false
+        parent: codibly_queues.general_consumer
+        public: true
+        tags:
+            - { name: bernard.receiver, message: deployQueue }
 ```
