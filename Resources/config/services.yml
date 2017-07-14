@@ -1,4 +1,22 @@
 services:
-#    codibly_queues.example:
-#        class: Codibly\QueuesBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    codibly_queues.general_consumer:
+        abstract: true
+        arguments:
+            - '@monolog.logger'
+            - '@doctrine.orm.entity_manager'
+            - '@codibly_queues.message_factory'
+            - '@event_dispatcher'
+        public: true
+
+    codibly_queues.hash_generator.sha_hash:
+        class: Codibly\QueuesBundle\HashGenerator\ShaHashGenerator
+        public: true
+
+    codibly_queues.adapter.bernard:
+        class: Codibly\QueuesBundle\Adapter\BernardAdapter
+        arguments: ['@bernard.producer']
+
+    codibly_queues.queue:
+        class: Codibly\QueuesBundle\Queue
+        arguments: ['@codibly_queues.adapter.bernard']
