@@ -34,8 +34,6 @@ abstract class MessageEntityAbstract
             throw new \InvalidArgumentException('Message body should contain valid json');
         }
 
-        $data['messageId'] = mt_rand(1,10000); // todo !!!!!!!!
-
         foreach ($this->getRequiredProperties() as $property) {
             if (!array_key_exists($property, $data)) {
                 throw new \InvalidArgumentException(

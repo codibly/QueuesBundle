@@ -127,6 +127,5 @@ abstract class GeneralConsumer
         }
     }
 
-//    abstract protected function dispatchInternalEvent(Message $message); // todo!
     abstract protected function dispatchInternalEvent(Message $message);
 }
